@@ -71,7 +71,7 @@ def student_update(request):
         pythondata = JSONParser().parse(stream)
         id = pythondata.get('id')
         stu = Student.objects.get(id = id)
-        serializer = StudentSerializer(stu, data = pythondata, partial =True)
+        serializer = StudentSerializer(stu, data = pythondata, partial =True) #if partial = true is not set then we have update all the data
         if serializer.is_valid():
             serializer.save()
             res = {'msg': 'Data updated'}
@@ -79,3 +79,14 @@ def student_update(request):
             return HttpResponse(json_data, content_type= 'application/json')
         json_data = JSONRenderer().render(serializer.errors)
         return HttpResponse(json_data,content_type ='application/json')
+
+    if request.method == "DELETE":
+        json_data  = request.body
+        stream = io.BytesIO(json_data)
+        pythondata = JSONParser().parse(stream)
+        id = pythondata.get('id')
+        stu = Student.objects.get(id = id)
+        stu.delete()
+        res = {'msg': 'Data deleted'}
+        json_data = JSONRenderer().render(res)
+        return HttpResponse(json_data, content_type= 'application/json')
