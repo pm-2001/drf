@@ -23,4 +23,5 @@ urlpatterns = [
     path('stuinfo/', views.student_list),
     path('stucreate/', views.student_create),
     path('stuupdate/', views.student_update),
+    path('stuupd/', views.StudentAPI.as_view()),
 ]
