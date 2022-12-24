@@ -22,4 +22,5 @@ urlpatterns = [
     path('stuinfo/<int:pk>', views.student_detail),
     path('stuinfo/', views.student_list),
     path('stucreate/', views.student_create),
+    path('stuupdate/', views.student_update),
 ]

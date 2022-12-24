@@ -3,7 +3,6 @@ import json
 URL = "http://127.0.0.1:8000/stucreate/"
 
 data = {
-    'id':7,
     'name': 'Prince',
     'roll' : 32,
     'city' : 'lucknow'
